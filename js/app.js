@@ -15,7 +15,7 @@ $(document).ready(()=>{
 
   $('#container img').on('click', startAjax);
 
-  function startAjax(event) {   debugger;
+  function startAjax(event) {  
     event.preventDefault();
     let numberCode = $(event.target).attr('data-number');
       $.ajax({
