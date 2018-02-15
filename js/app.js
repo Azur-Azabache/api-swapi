@@ -8,23 +8,66 @@ $(document).ready(()=>{
   let num = 1;
   //Añadiendo cada imagen
   while( num <= 88 ) {
-    let img = `<img class="avatar" data-toggle="modal" data-target="#exampleModalCenter"; src="https://starwars-visualguide.com/assets/img/characters/${num}.jpg">`;
+    let img = `<img class="avatar" data-number="${num}" data-toggle="modal" data-target="#exampleModalCenter" src="https://starwars-visualguide.com/assets/img/characters/${num}.jpg">`;
     $('#container').append(img);
     num++;
   }
-//Probando
-  function info(){
-    //Probando con Luke Skywalker
-    let apiUrl = 'https://swapi.co/api/people/1';
-    axios.get(apiUrl).then(function(response){
-    getInfo(response.data);
-  })
+
+
+
+  $.ajax({
+
+
+    url: `https://swapi.co/api/people/1`
+  }).done(addInfo);
+
+  function addInfo(user) {
+    console.log(name);
+      name.text("Nombre: "+ user.name)
+      height.text("Estatura: "+ user.height + " cm.")
+      weight.text("Peso: "+ user.weight)
+      birth.text("Fecha de Nacimiento: "+ user.birth)
   }
-    function getInfo(data){
-    name.innerText = `Nombre: ${data.name}`;
-    height.innerText = `Estatura: ${data.height}`;
-    weight.innerText = `Peso: ${data.weight}`;
-    birth.innerText = `Año de nacimiento: ${data.birth_year}`;
-    }
-info()
+
+//   function getNews (){
+//     const articleRequest = new XMLHttpRequest();
+//     articleRequest.open('GET', 'https://swapi.co/api/people/'+ 1);
+//
+//   }
+//
+//   $('img').on('click', function setNumber() {
+//     if(this.dataset.number === num){
+//       name.innerText = `Nombre: ${data.name}`;
+//       height.innerText = `Estatura: ${data.height}`;
+//       weight.innerText = `Peso: ${data.weight}`;
+//       birth.innerText = `Año de nacimiento: ${data.birth_year}`;
+//     }
+//
+// });
+// function setNumber() {
+//   if(this.dataset.number === num){
+//     name.innerText = `Nombre: ${data.name}`;
+//     height.innerText = `Estatura: ${data.height}`;
+//     weight.innerText = `Peso: ${data.weight}`;
+//     birth.innerText = `Año de nacimiento: ${data.birth_year}`;
+//   }
+//
+// }
+// //Probando
+//   function info(){
+//     //Probando con Luke Skywalker
+//     let apiUrl = 'https://swapi.co/api/people/1';
+//     axios.get(apiUrl).then(function(response){
+//     getInfo(response.data);
+//   })
+//   }
+//     function getInfo(data){
+//     name.innerText = `Nombre: ${data.name}`;
+//     height.innerText = `Estatura: ${data.height}`;
+//     weight.innerText = `Peso: ${data.weight}`;
+//     birth.innerText = `Año de nacimiento: ${data.birth_year}`;
+//     }
+//
+// info()
+
 });
