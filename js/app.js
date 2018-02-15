@@ -7,26 +7,33 @@ $(document).ready(()=>{
   //Variable contador
   let num = 1;
   //Añadiendo cada imagen
-  while( num <= 88 ) {
+  while( num < 87 ) {
     let img = `<img class="avatar" data-number="${num}" data-toggle="modal" data-target="#exampleModalCenter" src="https://starwars-visualguide.com/assets/img/characters/${num}.jpg">`;
     $('#container').append(img);
     num++;
   }
 
+  $('#container img').on('click', startAjax);
 
+  function startAjax(event) {   debugger;
+    event.preventDefault();
+    let numberCode = $(event.target).attr('data-number');
+      $.ajax({
+            url: `https://swapi.co/api/people/${numberCode}`
+      }).done(addInfo)
+        .fail(handleError)
+  }
 
-  $.ajax({
-
-
-    url: `https://swapi.co/api/people/1`
-  }).done(addInfo);
+function handleError() {
+  console.log('error');
+}
 
   function addInfo(user) {
-    console.log(name);
-      name.text("Nombre: "+ user.name)
-      height.text("Estatura: "+ user.height + " cm.")
-      weight.text("Peso: "+ user.weight)
-      birth.text("Fecha de Nacimiento: "+ user.birth)
+    console.log(user);
+      name.text(`Nombre: ${user.name}`);
+      height.text("Estatura: "+ user.height + " cm.");
+      weight.text("Peso: "+ user.weight);
+      birth.text("Fecha de Nacimiento: "+ user.birth);
   }
 
 //   function getNews (){
