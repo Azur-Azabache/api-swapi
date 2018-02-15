@@ -3,6 +3,10 @@
 ### Descripción:
 Que la fuerza te acompañe en este ejercicio, revisa las siguientes slides para que puedas crear esta fenómenal app para los amantes de Star Wars.
 
+## Desarrolladoras:
+- Jymma Mogollon 
+- Pamela Rojas Vega
+
 ### Herramientas:
 
 - Ecmascript 6
